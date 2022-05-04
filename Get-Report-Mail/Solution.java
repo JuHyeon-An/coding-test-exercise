@@ -3,6 +3,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+
+/* ==============================================================
+ *	[2022 KAKAO BLIND RECRUITMENT] 신고 결과 받기
+ *  https://programmers.co.kr/learn/courses/30/lessons/92334
+ * ==============================================================
+ */
+
 class Solution {
 	public int[] solution(String[] id_list, String[] report, int k) {
 

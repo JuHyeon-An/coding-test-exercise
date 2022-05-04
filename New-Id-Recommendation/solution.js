@@ -1,3 +1,9 @@
+/* ==============================================================
+ *	[2021 KAKAO BLIND RECRUITMENT] 신규 아이디 추천
+ *  https://programmers.co.kr/learn/courses/30/lessons/72410
+ * ==============================================================
+ */
+
 function solution(new_id) {
   let answer = new_id
     .toLowerCase() // 1) 소문자로
