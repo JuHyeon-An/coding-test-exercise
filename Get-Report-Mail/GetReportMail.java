@@ -10,7 +10,7 @@ import java.util.Map;
  * ==============================================================
  */
 
-class Solution {
+class GetReportMail {
 	public int[] solution(String[] id_list, String[] report, int k) {
 
 		int idLen = id_list.length;
@@ -49,10 +49,10 @@ class Solution {
 		String[] report = { "muzi frodo", "apeach frodo", "frodo neo",
 				"muzi neo", "apeach muzi" };
 
-		Solution s = new Solution();
+		GetReportMail g = new GetReportMail();
 
 		int k = 2;
-		System.out.println(Arrays.toString(s.solution(id_list, report, k)));
+		System.out.println(Arrays.toString(g.solution(id_list, report, k)));
 
 	}
 
