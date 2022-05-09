@@ -1,71 +1,67 @@
 public class KeyPadDirection {
 
+	int currLeft = 10;
+	int currRight = 12;
+	String hand = "";
+
 		public String solution ( int[] numbers, String hand){
+			this.hand = hand;
 
 			String answer = "";
-			int currLeft = 0;
-			int currRight = 0;
 
-			for (int i = 0; i < numbers.length; i++) {
-				int num = numbers[i];
-				int rest = num == 0 ? 2 : num % 3;
-				if (rest == 1) {
-					answer += "L";
-					currLeft = num;
-				} else if (rest == 0) {
-					answer += "R";
-					currRight = num;
-				} else {
-					answer += getSteps(currLeft, currRight, num);
-				}
-
+			for (int num : numbers) {
+				num = num == 0 ? 11 : num;
+				answer += getDirection(num);
 			}
 
 			return answer;
 		}
 
-		public String getSteps ( int left, int right, int current){
-			int leftDr[] = getDirection(left);
-			int rightDr[] = getDirection(right);
-			int currDr[] = getDirection(current);
+		public String getDirection(int num){
+			int x = (num-1) / 3;
+			int y = (num-1) % 3;
+			String result = "";
+			if (y == 0) {
+				// L
+				currLeft = num;
+				return "L";
+			}else if(y == 2){
+				// R
+				currRight = num;
+				return "R";
+			}else{
+				// center
+				int a = Math.abs((currLeft-1) /3 - x) + Math.abs((currLeft-1) %3 - y);
+				int b = Math.abs((currRight-1)/3 - x) + Math.abs((currRight-1) %3 - y);
 
-			int leftResult = Math.abs(leftDr[0] - currDr[0]) + (leftDr[1] - currDr[1]);
-			int rightResult = Math.abs(rightDr[0] - currDr[0]) + (rightDr[1] - currDr[1]);
-
-
-			String result = leftResult > rightResult ? "R" : "L";
-
-			if (leftResult > rightResult) {
-				result = "R";
-			} else if (leftResult < rightResult) {
-				result = "L";
-			} else {
-				result = "0";
+				if(a>b) {
+					currRight = num;
+					return "R";
+				}
+				else if (a<b) {
+					currLeft = num;
+					return "L";
+				}
+				else {
+					if(hand.equals("left")){
+						currLeft = num;
+						return "L";
+					}else{
+						currRight = num;
+						return "R";
+					}
+				}
 			}
-
-			return result;
 		}
-
-		public int[] getDirection ( int num){
-
-			int x = num / 3;
-			int rest = num == 0 ? 2 : num % 3;
-
-			int y = rest == 1 ? 0 : 2;
-
-			int result[] = {x, y};
-			return result;
-		}
-
 
 		public static void main (String[]args){
 			KeyPadDirection s = new KeyPadDirection();
 
-			int[] numbers = {1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5, 0};
-			String hand = "right";
+			int[] numbers = {7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
+			String hand = "left";
 
 			String answer = s.solution(numbers, hand);
-			// LRLLLRLLRRL
+			// LRLLRRLLLRR
 			System.out.println(answer);
 
 
