@@ -17,41 +17,42 @@ public class KeyPadDirection {
 			return answer;
 		}
 
-		public String getDirection(int num){
-			int x = (num-1) / 3;
-			int y = (num-1) % 3;
+		public String getDirection(int num) {
+			int x = (num - 1) / 3;
+			int y = (num - 1) % 3;
 			String result = "";
 			if (y == 0) {
-				// L
-				currLeft = num;
-				return "L";
-			}else if(y == 2){
-				// R
-				currRight = num;
-				return "R";
-			}else{
+				result = setFinger("L", num);
+			} else if (y == 2) {
+				result = setFinger("R", num);
+			} else {
 				// center
-				int a = Math.abs((currLeft-1) /3 - x) + Math.abs((currLeft-1) %3 - y);
-				int b = Math.abs((currRight-1)/3 - x) + Math.abs((currRight-1) %3 - y);
+				int a = Math.abs((currLeft - 1) / 3 - x) + Math.abs((currLeft - 1) % 3 - y);
+				int b = Math.abs((currRight - 1) / 3 - x) + Math.abs((currRight - 1) % 3 - y);
 
-				if(a>b) {
-					currRight = num;
-					return "R";
-				}
-				else if (a<b) {
-					currLeft = num;
-					return "L";
-				}
-				else {
-					if(hand.equals("left")){
-						currLeft = num;
-						return "L";
-					}else{
-						currRight = num;
-						return "R";
+				if (a > b) {
+					result = setFinger("R", num);
+				} else if (a < b) {
+					result = setFinger("L", num);
+				} else if (y == 2) {
+				} else {
+					if (hand.equals("left")) {
+						result = setFinger("L", num);
+					} else {
+						result = setFinger("R", num);
 					}
 				}
 			}
+			return result;
+		}
+
+		public String setFinger(String fin, int num) {
+			if (fin.equals("R")) {
+				currRight = num;
+			} else {
+				currLeft = num;
+			}
+			return fin;
 		}
 
 		public static void main (String[]args){
