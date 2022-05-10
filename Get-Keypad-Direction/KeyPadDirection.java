@@ -34,7 +34,6 @@ public class KeyPadDirection {
 					result = "R";
 				} else if (a < b) {
 					result = "L";
-				} else if (y == 2) {
 				} else {
 					if (hand.equals("left")) {
 						result = "L";
