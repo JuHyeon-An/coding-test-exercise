@@ -22,37 +22,37 @@ public class KeyPadDirection {
 			int y = (num - 1) % 3;
 			String result = "";
 			if (y == 0) {
-				result = setFinger("L", num);
+				result = "L";
 			} else if (y == 2) {
-				result = setFinger("R", num);
+				result = "R";
 			} else {
 				// center
 				int a = Math.abs((currLeft - 1) / 3 - x) + Math.abs((currLeft - 1) % 3 - y);
 				int b = Math.abs((currRight - 1) / 3 - x) + Math.abs((currRight - 1) % 3 - y);
 
 				if (a > b) {
-					result = setFinger("R", num);
+					result = "R";
 				} else if (a < b) {
-					result = setFinger("L", num);
+					result = "L";
 				} else if (y == 2) {
 				} else {
 					if (hand.equals("left")) {
-						result = setFinger("L", num);
+						result = "L";
 					} else {
-						result = setFinger("R", num);
+						result = "R";
 					}
 				}
 			}
+			setCurrNum(result, num);
 			return result;
 		}
 
-		public String setFinger(String fin, int num) {
+		public void setCurrNum(String fin, int num) {
 			if (fin.equals("R")) {
 				currRight = num;
 			} else {
 				currLeft = num;
 			}
-			return fin;
 		}
 
 		public static void main (String[]args){
