@@ -24,20 +24,15 @@ public class MakePrimeNumber {
     }
 	
 	public boolean isPrimeNum(int num){
-		boolean result = false;
 		// 소수 : 1과 자기 자신만 약수로 가지는 수 = 1과 자기 자신 제외하고는 나머지가 0이 아님
-		
-		for (int i = 2; i < num; i++) {
+		// 에라토스테네스의 체 법칙 적용
+		for (int i = 2; i <= Math.sqrt(num); i++) {
 			if(num%i == 0){
-				result = false;
-				break;
-			}else{
-				result = true;
+				return false;
 			}
 		}
 		
-		
-		return result;
+		return num >= 2;
 	}
 	
 	public static void main(String[] args) {
