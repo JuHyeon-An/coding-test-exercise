@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class KthNumber {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = new int[3];
+        int[] answer = new int[commands.length];
 
         for (int i = 0; i < commands.length; i++){
             int first = commands[i][0]-1;
