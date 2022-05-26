@@ -1,5 +1,11 @@
 import java.util.Arrays;
 
+/* ==============================================================
+ *	[정렬] K번째 수
+ *  https://programmers.co.kr/learn/courses/30/lessons/42748
+ * ==============================================================
+ */
+
 public class KthNumber {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[3];
