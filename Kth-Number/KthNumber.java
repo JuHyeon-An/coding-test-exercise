@@ -1,27 +1,18 @@
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class KthNumber {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = {};
-        String[] participant = {"leo", "kiki", "eden"};
-        List<Integer> list = Arrays.stream(array).boxed().toList();
-
-        List<Integer> list2 = new ArrayList<>();
+        int[] answer = new int[3];
 
         for (int i = 0; i < commands.length; i++){
             int first = commands[i][0]-1;
-            int second = commands[i][1]-1;
-            int third = commands[i][2] + first;
+            int second = commands[i][1];
+            int third = commands[i][2]-1;
 
-            System.out.println(array[third]);
+            int[] arr = Arrays.copyOfRange(array, first, second);
+            Arrays.sort(arr);
 
-
-                System.out.println("end");
-
-
+            answer[i] = arr[third];
         }
 
         return answer;
