@@ -6,20 +6,17 @@
 
 public class NumberOfPY {
     boolean solution(String s) {
-        boolean answer = true;
 
-        String[] temp = s.toLowerCase().split("");
+        s = s.toLowerCase();
 
-        int y = 0;
-        int p = 0;
-        for(String c : temp){
-            if(c.equals("y")) y++;
-            if(c.equals("p")) p++;
+        int cnt = 0;
+
+        for(int i = 0; i<s.length(); i++){
+            if(s.charAt(i) == 'y') cnt++;
+            if(s.charAt(i) == 'p') cnt--;
         }
 
-        answer = y==p ? true: false;
-
-        return answer;
+        return cnt == 0;
     }
 
     public static void main(String[] args) {
